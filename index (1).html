@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 O REI DAS MASSAGENS RDM</title>
+    
+    <link rel="icon" href="WhatsApp Image 2026-04-14 at 17.33.00.jpeg" type="image/jpeg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ffcc00; 
+            --primary-dark: #ccaa00;
+            --bg: #000000;
+            --card-bg: #111111;
+            --text: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            text-transform: uppercase; 
+            overflow-x: hidden;
+        }
+
+        /* --- LATERAIS COM COROAS (APARECE NO PC) --- */
+        @media (min-width: 1025px) {
+            body::before, body::after {
+                content: "👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑 👑";
+                position: fixed; top: 0; width: 60px; height: 100vh;
+                background: var(--primary); color: #000; font-size: 28px;
+                text-align: center; line-height: 1.8; padding-top: 20px; z-index: 10;
+                box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+            }
+            body::before { left: 0; }
+            body::after { right: 0; }
+            .content-wrapper { margin: 0 65px; }
+        }
+
+        /* --- BARRA DE NAVEGAÇÃO SUPERIOR --- */
+        .top-nav {
+            background: rgba(17, 17, 17, 0.95);
+            padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--primary);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+        }
+
+        .user-area, .cart-icon {
+            display: flex; align-items: center; gap: 10px;
+            cursor: pointer; font-weight: 900; font-size: 13px;
+            transition: 0.3s;
+        }
+        .user-area:hover, .cart-icon:hover { color: var(--primary); }
+
+        .cart-icon { position: relative; }
+        .cart-count {
+            background: #ff0000; color: white; padding: 2px 7px; border-radius: 50%;
+            font-size: 11px; position: absolute; top: -10px; right: -15px;
+            box-shadow: 0 0 10px rgba(255,0,0,0.5);
+        }
+
+        /* --- CABEÇALHO --- */
+        header { text-align: center; padding: 40px 20px; }
+        .crown-pulse { font-size: 55px; margin-bottom: 10px; animation: pulse 2s infinite; }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 0px var(--primary)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--primary)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 0px var(--primary)); }
+        }
+
+        /* --- LOGO CENTRAL (SUA IMAGEM) --- */
+        .hero-container { padding: 20px; display: flex; justify-content: center; }
+        .main-photo-circle {
+            width: clamp(280px, 50vw, 380px);
+            height: clamp(280px, 50vw, 380px);
+            background-image: url('WhatsApp Image 2026-04-14 at 17.33.00.jpeg');
+            background-size: cover; 
+            background-position: center;
+            border-radius: 50%;
+            border: 10px solid var(--primary);
+            box-shadow: 0 0 50px rgba(255, 204, 0, 0.4);
+            transition: 0.5s ease;
+            cursor: pointer;
+        }
+        .main-photo-circle:hover { 
+            transform: scale(1.05) rotate(2deg); 
+            box-shadow: 0 0 70px rgba(255, 204, 0, 0.7); 
+        }
+
+        /* --- GRID DE PRODUTOS --- */
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        .store-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        
+        .product-card {
+            background: var(--card-bg); border: 2px solid #222; padding: 25px;
+            transition: var(--transition); position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(255, 204, 0, 0.2);
+        }
+
+        .product-img {
+            height: 280px; background-size: cover; background-position: center;
+            border-radius: 4px; margin-bottom: 20px; border: 1px solid #333;
+        }
+
+        /* --- BOTÕES --- */
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        
+        .btn-cart {
+            background: transparent; color: var(--primary);
+            border: 2px solid var(--primary); padding: 15px;
+            font-weight: 900; cursor: pointer; transition: 0.3s;
+            font-size: 11px;
+        }
+        .btn-cart:hover { background: rgba(255, 204, 0, 0.1); }
+
+        .btn-buy-now {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+            color: #000; border: none; padding: 15px;
+            font-weight: 900; cursor: pointer; text-decoration: none; 
+            text-align: center; transition: 0.3s; font-size: 11px;
+            box-shadow: 0 4px 0 #997a00;
+        }
+        .btn-buy-now:hover { background: #fff; transform: scale(1.05); box-shadow: 0 4px 0 #ccc; }
+
+        /* --- RODAPÉ --- */
+        footer {
+            background: #000; padding: 80px 20px;
+            border-top: 5px solid var(--primary); text-align: center; margin-top: 80px;
+        }
+
+        .contact-link { 
+            color: var(--primary); font-size: clamp(16px, 5vw, 24px); 
+            text-decoration: none; font-weight: 900; border: 3px solid var(--primary);
+            padding: 20px 40px; display: inline-block; transition: 0.3s;
+            background: rgba(255, 204, 0, 0.05);
+        }
+        .contact-link:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px var(--primary); }
+
+        /* --- CARRINHO SIDEBAR --- */
+        #cart-sidebar {
+            position: fixed; right: -420px; top: 0; width: 380px; height: 100%;
+            background: #000; border-left: 2px solid var(--primary);
+            z-index: 2000; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 30px; 
+            box-sizing: border-box; display: flex; flex-direction: column;
+        }
+        #cart-sidebar.active { right: 0; box-shadow: -10px 0 60px rgba(0,0,0,0.9); }
+
+        /* --- LOGIN MODAL --- */
+        #login-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 3000; display: none;
+            align-items: center; justify-content: center; backdrop-filter: blur(5px);
+        }
+        .login-box { background: #111; padding: 50px; border: 2px solid var(--primary); text-align: center; width: 90%; max-width: 400px; }
+        .login-box input { 
+            padding: 15px; width: 100%; margin-bottom: 20px; box-sizing: border-box; 
+            background: #000; border: 1px solid #333; color: #fff; font-weight: 700; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <nav class="top-nav">
+        <div class="user-area" onclick="document.getElementById('login-modal').style.display='flex'">
+            👤 <span id="user-display">CLIENTE REAL</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 PEDIDO <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </nav>
+
+    <header>
+        <div class="crown-pulse">👑</div>
+        <h1 style="color: var(--primary); font-size: clamp(32px, 8vw, 55px); font-weight: 900; letter-spacing: -2px; margin: 0;">O REI DAS MASSAGENS</h1>
+        <p style="color: #888; font-size: 14px; margin-top: 10px; letter-spacing: 2px;">Seu corpo merece um toque de realeza</p>
+    </header>
+
+    <div class="hero-container">
+        <div class="main-photo-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="store-grid">
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600');"></div>
+                <h3 style="letter-spacing: 1px;">Sessão Massagem</h3>
+                <p style="color: var(--primary); font-size: 32px; font-weight: 900; margin: 15px 0;">R$ 80,00</p>
+                <div class="btn-group">
+                    <button class="btn-cart" onclick="addToCart('Sessão Massagem', 80)">+ CARRINHO</button>
+                    <a href="https://api.whatsapp.com/send?phone=5518997215017&text=Olá Rei! Quero agendar a Sessão Massagem AGORA!" target="_blank" class="btn-buy-now">COMPRAR AGORA</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600');"></div>
+                <h3 style="letter-spacing: 1px;">Massagem Relaxante Completa</h3>
+                <p style="color: var(--primary); font-size: 32px; font-weight: 900; margin: 15px 0;">R$ 79,99</p>
+                <div class="btn-group">
+                    <button class="btn-cart" onclick="addToCart('Massagem Relaxante Completa', 79.99)">+ CARRINHO</button>
+                    <a href="https://api.whatsapp.com/send?phone=5518997215017&text=Olá Rei! Quero a Massagem Relaxante Completa AGORA!" target="_blank" class="btn-buy-now">COMPRAR AGORA</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div style="font-size: 30px; margin-bottom: 20px;">👑 👑 👑</div>
+        <p style="font-weight: 900; letter-spacing: 3px; margin-bottom: 35px;">DÚVIDAS? FALE COM O REI</p>
+        <a href="https://api.whatsapp.com/send?phone=5518997215017" target="_blank" class="contact-link">
+            WHATSAPP: (18) 99721-5017
+        </a>
+        <p style="color: #444; margin-top: 80px; font-size: 11px; font-weight: 700; letter-spacing: 1px;">
+            © 2026 O REI DAS MASSAGENS RDM - BIRIGUI SP<br>
+            A REALEZA DO RELAXAMENTO.
+        </p>
+    </footer>
+</div>
+
+<div id="cart-sidebar">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px;">
+        <h2 style="color: var(--primary); margin: 0; font-size: 18px;">MEU PEDIDO REAL</h2>
+        <span onclick="toggleCart()" style="cursor:pointer; font-size: 30px; color: var(--primary); line-height: 1;">×</span>
+    </div>
+    <div id="cart-items-list" style="flex-grow: 1; overflow-y: auto; padding: 20px 0;"></div>
+    <div style="border-top: 1px solid #222; padding-top: 20px;">
+        <p style="font-size: 18px; margin: 0;">TOTAL:</p>
+        <p id="total-price" style="color: var(--primary); font-weight: 900; font-size: 30px; margin: 5px 0 20px 0;">R$ 0,00</p>
+        <button class="btn-buy-now" style="width: 100%; padding: 20px; font-size: 14px;" onclick="checkout()">FINALIZAR NO WHATSAPP</button>
+    </div>
+</div>
+
+<div id="login-modal">
+    <div class="login-box">
+        <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 20px;">QUEM É VOCÊ, NOBRE?</h2>
+        <input type="text" id="in-name" placeholder="DIGITE SEU NOME...">
+        <button class="btn-buy-now" style="width: 100%" onclick="saveUser()">ENTRAR NO REINO</button>
+        <p onclick="document.getElementById('login-modal').style.display='none'" style="cursor:pointer; font-size: 11px; color: #555; margin-top: 20px;">CONTINUAR COMO VISITANTE</p>
+    </div>
+</div>
+
+<script>
+    // SISTEMA DE PERSISTÊNCIA (SALVA NO NAVEGADOR)
+    let cart = JSON.parse(localStorage.getItem('rdm_cart')) || [];
+    let user = localStorage.getItem('rdm_user') || 'CLIENTE REAL';
+    document.getElementById('user-display').innerText = user;
+
+    function saveUser() {
+        const n = document.getElementById('in-name').value;
+        if(n) {
+            localStorage.setItem('rdm_user', n.toUpperCase());
+            location.reload();
+        }
+    }
+
+    function toggleCart() {
+        document.getElementById('cart-sidebar').classList.toggle('active');
+    }
+
+    function addToCart(name, price) {
+        cart.push({name, price});
+        localStorage.setItem('rdm_cart', JSON.stringify(cart));
+        updateCartUI();
+        toggleCart(); // Abre o carrinho para mostrar o item
+    }
+
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('rdm_cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        const list = document.getElementById('cart-items-list');
+        const count = document.getElementById('cart-count');
+        const totalDisp = document.getElementById('total-price');
+        
+        list.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.price;
+            list.innerHTML += `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid #222; padding-bottom:10px;">
+                    <div>
+                        <div style="font-weight:900; font-size:13px; color:#fff;">${item.name}</div>
+                        <div style="color:var(--primary); font-weight:900;">R$ ${item.price.toFixed(2)}</div>
+                    </div>
+                    <b onclick="removeItem(${index})" style="color:#ff4444; cursor:pointer; font-size:22px; padding:5px 10px;">×</b>
+                </div>
+            `;
+        });
+
+        count.innerText = cart.length;
+        totalDisp.innerText = `R$ ${total.toFixed(2)}`;
+    }
+
+    function checkout() {
+        if(cart.length === 0) return alert("SEU PEDIDO ESTÁ VAZIO!");
+        let msg = `Olá Rei das Massagens! Me chamo ${user}.%0AQuero agendar os seguintes serviços do meu pedido real:%0A%0A`;
+        cart.forEach(i => msg += `👑 *${i.name}* - R$ ${i.price.toFixed(2)}%0A`);
+        const total = cart.reduce((a, b) => a + b.price, 0);
+        msg += `%0A*TOTAL: R$ ${total.toFixed(2)}*`;
+        
+        window.open(`https://api.whatsapp.com/send?phone=5518997215017&text=${msg}`, '_blank');
+    }
+
+    // CARREGA O CARRINHO AO INICIAR
+    updateCartUI();
+</script>
+
+</body>
+</html>
